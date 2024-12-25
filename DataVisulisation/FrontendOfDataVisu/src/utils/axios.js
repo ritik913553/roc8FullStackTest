@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://data-visulization-app.vercel.app/api/v1', 
+  baseURL: 'https://datavisulization-app.vercel.app/api/v1', 
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
