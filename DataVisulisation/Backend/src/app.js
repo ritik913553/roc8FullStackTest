@@ -1,17 +1,20 @@
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express()
 
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
+    origin:'https://data-visulization-app.vercel.app',
     credentials: true
 }))
 app.use(express.json({limit: "16kb"}));
+app.use(cookieParser());
+
 app.use(express.urlencoded({extended: true,limit:"16kb"})); 
 app.use(express.static("public"))
-app.use(cookieParser());
 
 
 //routes import
