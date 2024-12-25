@@ -13,7 +13,7 @@ const EmailView = () => {
 
   // Load emails from localStorage or fetch from API
   useEffect(() => {
-    const storedEmails = localStorage.getItem("emails");
+    const storedEmails = localStorage.getItem(`emails${page}`);
     if (storedEmails) {
       setEmails(JSON.parse(storedEmails));
     } else {
@@ -24,30 +24,18 @@ const EmailView = () => {
           favorite: false,
         }));
         setEmails(emailList);
-        localStorage.setItem("emails", JSON.stringify(emailList));
+        localStorage.setItem(`emails${page}`, JSON.stringify(emailList));
       });
     }
-  }, []);
+  }, [page]);
 
   // Save updated emails to localStorage whenever emails state changes
   useEffect(() => {
     if (emails.length > 0) {
-      localStorage.setItem("emails", JSON.stringify(emails));
+      localStorage.setItem(`emails${page}`, JSON.stringify(emails));
     }
   }, [emails]);
 
-  useEffect(() => {
-    fetchEmails(page).then((response) => {
-      const emailList = response.data.list.map((email) => ({
-        ...email,
-        read: false,
-        favorite: false,
-      }));
-      
-      setEmails(emailList);
-      localStorage.setItem("emails", JSON.stringify(emailList));
-    });
-  }, [page]);
 
   const handleSelectEmail = (id) => {
     setSelectedEmailId(id);
