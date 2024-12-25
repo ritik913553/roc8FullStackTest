@@ -7,6 +7,7 @@ dotenv.config();
 const app = express()
 
 app.options('*', cors());
+app.options('/api/v1/user/login', cors());
 
 app.use(cors({
     origin:'https://data-visulization-app.vercel.app',
