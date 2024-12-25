@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.emailList::-webkit-scrollbar {
+    display: none;
+}
+.emailBody::-webkit-scrollbar {
+    display: none;
+}
