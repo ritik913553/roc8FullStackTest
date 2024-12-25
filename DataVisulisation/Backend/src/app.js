@@ -10,6 +10,7 @@ app.options('*', cors());
 
 app.use(cors({
     origin:'https://data-visulization-app.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
 }))
 app.use(express.json({limit: "16kb"}));
